@@ -3,16 +3,18 @@ import requests
 
 
 class Player:
-    def __init__(self, dict):
-        self.name = dict['name']
-        self.nationality = dict['nationality']
-        self.assists = dict['assists']
-        self.goals = dict['goals']
-        self.team = dict['team']
-        self.games = dict['games']
-        self.id = dict['id']
+    def __init__(self, data):
+        self.name = data['name']
+        self.nationality = data['nationality']
+        self.assists = data['assists']
+        self.goals = data['goals']
+        self.team = data['team']
+        self.games = data['games']
         self.points = self.assists + self.goals
-    
+
+    def print_foo(self):
+        print("foo")
+
     def __str__(self):
         return f"Name: {self.name} Team: {self.team} Goals: {self.goals} Assists: {self.assists} Points: {self.points}"
 
@@ -22,12 +24,15 @@ class PlayerReader:
         self.url = url
 
     def get_players(self) -> list[Player]:
-        res = requests.get(self.url).json()
+        res = requests.get(self.url, timeout=30).json()
         players = []
         for player_dict in res:
             player = Player(player_dict)
             players.append(player)
         return players
+
+    def print_foo(self):
+        print("foo")
 
 
 class PlayerStats:
@@ -38,3 +43,5 @@ class PlayerStats:
         filtered = list(filter(lambda p: p.nationality == nat, self.players))
         return sorted(filtered, key=lambda p: -p.points)
 
+    def print_foo(self):
+        print("foo")
