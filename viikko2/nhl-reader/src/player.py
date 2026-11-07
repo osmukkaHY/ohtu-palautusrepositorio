@@ -45,3 +45,7 @@ class PlayerStats:
 
     def print_foo(self):
         print("foo")
+
+    def top_goal_scorers(self, count: int) -> list[Player]:
+        """Returns <count> players with the most goals in descending order"""
+        return sorted(self.players, key=lambda p: -p.goals)[:count]
