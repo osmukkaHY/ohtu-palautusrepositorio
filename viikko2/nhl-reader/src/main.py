@@ -16,13 +16,13 @@ def get_table(nat):
 
 def main():
     console = Console()
-    reader = PlayerReader("https://studies.cs.helsinki.fi/nhlstats/2024-25/players")
-    stats = PlayerStats(reader)
-    nationalities = sorted(list({p.nationality for p in reader.get_players()}))
-    print(nationalities)
 
     while True:
-        nat = console.input(f"Enter nationality{'/'.join(nationalities)}")
+        season = console.input("Enter the season you want stats for (between [2018-19, 2026-27]): ")
+        reader = PlayerReader(f"https://studies.cs.helsinki.fi/nhlstats/{season}/players")
+        stats = PlayerStats(reader)
+        nationalities = sorted(list({p.nationality for p in reader.get_players()}))
+        nat = console.input(f"Enter nationality ({'/'.join(nationalities)}): ")
         players = stats.top_scorers_by_nationality(nat)
         table = get_table(nat)
 
