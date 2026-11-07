@@ -43,6 +43,10 @@ class PlayerStats:
         filtered = list(filter(lambda p: p.nationality == nat, self.players))
         return sorted(filtered, key=lambda p: -p.points)
 
+    def top_scorers_by_team(self, team: str) -> list[Player]:
+        filtered = list(filter(lambda p: p.team == team, self.players))
+        return sorted(filtered, key=lambda p: -p.points)
+
     def print_foo(self):
         print("foo")
 
