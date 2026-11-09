@@ -1,15 +1,15 @@
-# imports
-
 from logger import logger
 from summa import summa
 from erotus import erotus
+from tulo import tulo
 
-logger("aloitetaan") # Random change
+logger("aloitetaan ohjelma")
 
-x = int(input("luku 1: "))  # change
-y = int(input("luku 2: "))  # change
-print(f"{summa(x, y)}")
-print(f"{erotus(x, y)}")
+x = int(input("luku 1: "))
+y = int(input("luku 2: "))
+print(f"{x} + {y} = {summa(x, y)}") 
+print(f"{x} - {y} = {erotus(x, y)}") 
+print(f"{x} * {y} = {tulo(x, y)}") 
 
 logger("lopetetaan")
-logger("hei hei")
+print("goodbye!")
